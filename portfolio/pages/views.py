@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from listings.models import Listing
-from listings.choices import level_choice, time_choice programming_choice
+from listings.choices import level_choice, time_choice, programming_choice
 def index(request):
     listings=Listing.objects.order_by('-list_date').filter(is_published=True)[:3]
     context={
