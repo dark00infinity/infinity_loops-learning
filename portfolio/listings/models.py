@@ -1,9 +1,9 @@
 from django.db import models
 from datetime import datetime
 
-
 class Listing(models.Model):
     title=models.CharField(max_length=200)
+    topic=models.CharField(max_length=50,default="NEW")
     description=models.TextField(blank=True)
     photo_main=models.ImageField(upload_to='photos/%y/%m/%d/')
     photo_1=models.ImageField(upload_to='photos/%y/%m/%d/',blank=True)

@@ -1,10 +1,8 @@
 {% load static %}
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
-  <div class="container">
-    <a class="navbar-brand" href="{% url 'index' %}">
-      <img src="{% static 'img/main_logo.png' %}" class="logo" alt="" width="50" height="90">
-    </a>
+  <div class="container" >
+    <div><a class="navbar-brand" style="padding:0px;margin-left:0px;height:78px;" href="#"> <img class="img-fluid rounded" src="{% static 'img/infinityloops.png' %}" style="width: 120px;height: 120px;"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button></div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -15,8 +13,7 @@
               class="nav-item active mr-3"
           {% else %}
               class="nav-item mr-3"
-          {% endif %}
-        >
+          {% endif %}>
           <a class="nav-link" href="{% url 'index' %}">Home</a>
         </li>
         <li

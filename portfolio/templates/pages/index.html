@@ -1,262 +1,573 @@
-{% extends 'base.html' %}{% block content %}
-
+{% extends 'base.html' %}
+{% block content %}
 <!-- Showcase -->
 <section id="showcase">
   <div class="container text-center">
     <div class="home-search p-5">
       <div class="overlay p-5">
         <h1 class="display-4 mb-4">
-          Property Searching Just Got So Easy
+          Learning and tracking your growth just got so easy 
         </h1>
-        <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae quas, asperiores eveniet vel nostrum magnam
-          voluptatum tempore! Consectetur, id commodi!</p>
+        <p class="lead">from zero to hero, the learning that you will find nowwhere all the practical cases are covered here</p>
         <div class="search">
-          <form action="search.html">
+          <form action="{% url 'search' %}">
             <!-- Form Row 1 -->
             <div class="form-row">
               <div class="col-md-4 mb-3">
                 <label class="sr-only">Keywords</label>
-                <input type="text" name="keywords" class="form-control" placeholder="Keyword (Pool, Garage, etc)">
+                <select name="keywords" class="form-control">
+                  <option selected="true" disabled="disabled">select your category</option>
+                  <option value="beginner">beginner</option>
+                  <option value="intermediate">intermediate</option>
+                  <option value="advance">Advance</option>
+                </select>
               </div>
 
               <div class="col-md-4 mb-3">
-                <label class="sr-only">City</label>
-                <input type="text" name="city" class="form-control" placeholder="City">
+                <label class="sr-only">Programming_language</label>
+                <select name="Programming language" class="form-control">
+                  <option selected="true" disabled="disabled">Programming language</option>
+                  <option value="py">Python</option>
+                </select>
               </div>
 
               <div class="col-md-4 mb-3">
-                <label class="sr-only">State</label>
+                <label class="sr-only">Time you can give</label>
                 <select name="state" class="form-control">
-                  <option selected="true" disabled="disabled">State (All)</option>
-                  <option value="AL">Alabama</option>
-                  <option value="AK">Alaska</option>
-                  <option value="AZ">Arizona</option>
-                  <option value="AR">Arkansas</option>
-                  <option value="CA">California</option>
-                  <option value="CO">Colorado</option>
-                  <option value="CT">Connecticut</option>
-                  <option value="DE">Delaware</option>
-                  <option value="DC">District Of Columbia</option>
-                  <option value="FL">Florida</option>
-                  <option value="GA">Georgia</option>
-                  <option value="HI">Hawaii</option>
-                  <option value="ID">Idaho</option>
-                  <option value="IL">Illinois</option>
-                  <option value="IN">Indiana</option>
-                  <option value="IA">Iowa</option>
-                  <option value="KS">Kansas</option>
-                  <option value="KY">Kentucky</option>
-                  <option value="LA">Louisiana</option>
-                  <option value="ME">Maine</option>
-                  <option value="MD">Maryland</option>
-                  <option value="MA">Massachusetts</option>
-                  <option value="MI">Michigan</option>
-                  <option value="MN">Minnesota</option>
-                  <option value="MS">Mississippi</option>
-                  <option value="MO">Missouri</option>
-                  <option value="MT">Montana</option>
-                  <option value="NE">Nebraska</option>
-                  <option value="NV">Nevada</option>
-                  <option value="NH">New Hampshire</option>
-                  <option value="NJ">New Jersey</option>
-                  <option value="NM">New Mexico</option>
-                  <option value="NY">New York</option>
-                  <option value="NC">North Carolina</option>
-                  <option value="ND">North Dakota</option>
-                  <option value="OH">Ohio</option>
-                  <option value="OK">Oklahoma</option>
-                  <option value="OR">Oregon</option>
-                  <option value="PA">Pennsylvania</option>
-                  <option value="RI">Rhode Island</option>
-                  <option value="SC">South Carolina</option>
-                  <option value="SD">South Dakota</option>
-                  <option value="TN">Tennessee</option>
-                  <option value="TX">Texas</option>
-                  <option value="UT">Utah</option>
-                  <option value="VT">Vermont</option>
-                  <option value="VA">Virginia</option>
-                  <option value="WA">Washington</option>
-                  <option value="WV">West Virginia</option>
-                  <option value="WI">Wisconsin</option>
-                  <option value="WY">Wyoming</option>
+                  <option selected="true" disabled="disabled">alot time</option>
+                  <option value="1">1 week</option>
+                  <option value="2">2 week</option>
+                  <option value="3">3 week</option>
                 </select>
               </div>
             </div>
-            <!-- Form Row 2 -->
-            <div class="form-row">
-              <div class="col-md-6 mb-3">
-                <label class="sr-only">Bedrooms</label>
-                <select name="bedrooms" class="form-control">
-                  <option selected="true" disabled="disabled">Bedrooms (All)</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                </select>
-              </div>
-              <div class="col-md-6 mb-3">
-                <select name="price" class="form-control" id="type">
-                  <option selected="true" disabled="disabled">Max Price (Any)</option>
-                  <option value="100000">$100,000</option>
-                  <option value="200000">$200,000</option>
-                  <option value="300000">$300,000</option>
-                  <option value="400000">$400,000</option>
-                  <option value="500000">$500,000</option>
-                  <option value="600000">$600,000</option>
-                  <option value="700000">$700,000</option>
-                  <option value="800000">$800,000</option>
-                  <option value="900000">$900,000</option>
-                  <option value="1000000">$1M+</option>
-                </select>
-              </div>
-            </div>
-            <button class="btn btn-secondary btn-block mt-4" type="submit">Submit form</button>
+
+            <button class="btn btn-secondary btn-block mt-4" style="width:200px;" type="submit">Search</button>
           </form>
         </div>
       </div>
     </div>
   </div>
-</section>
 
+<style>
+  body{margin-top:20px;
+    background:#eee;
+    }
+    /* Timeline */
+    .timeline {
+      list-style: none;
+      padding: 0;
+      position: relative;
+    }
+    
+    .timeline:before {
+      top: 0;
+      bottom: 0;
+      position: absolute;
+      content: " ";
+      width: 3px;
+      background-color: #6c7293;
+      left: 50%;
+      margin-left: -1.5px;
+    }
+    
+    .timeline .timeline-wrapper {
+      display: block;
+      margin-bottom: 20px;
+      position: relative;
+      width: 100%;
+      padding-right: 90px;
+    }
+    
+    .timeline .timeline-wrapper:before {
+      content: " ";
+      display: table;
+    }
+    
+    .timeline .timeline-wrapper:after {
+      content: " ";
+      display: table;
+      clear: both;
+    }
+    
+    .timeline .timeline-wrapper .timeline-panel {
+      border-radius: 2px;
+      padding: 20px;
+      position: relative;
+      background: #ffffff;
+      border-radius: 6px;
+      box-shadow: 1px 2px 35px 0 rgba(1, 1, 1, 0.1);
+      width: 35%;
+      margin-left: 15%;
+    }
+    
+    .timeline .timeline-wrapper .timeline-panel:before {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 2px;
+      content: "";
+      left: 0;
+      right: 0;
+    }
+    
+    .timeline .timeline-wrapper .timeline-panel:after {
+      position: absolute;
+      top: 10px;
+      right: -14px;
+      display: inline-block;
+      border-top: 14px solid transparent;
+      border-left: 14px solid #ffffff;
+      border-right: 0 solid #ffffff;
+      border-bottom: 14px solid transparent;
+      content: " ";
+    }
+    
+    .timeline .timeline-wrapper .timeline-panel .timeline-title {
+      margin-top: 0;
+      color: #001737;
+      text-transform: uppercase;
+    }
+    
+    .timeline .timeline-wrapper .timeline-panel .timeline-body p + p {
+      margin-top: 5px;
+    }
+    
+    .timeline .timeline-wrapper .timeline-panel .timeline-body ul {
+      margin-bottom: 0;
+    }
+    
+    .timeline .timeline-wrapper .timeline-panel .timeline-footer span {
+      font-size: .6875rem;
+    }
+    
+    .timeline .timeline-wrapper .timeline-panel .timeline-footer i {
+      font-size: 1.5rem;
+    }
+    
+    .timeline .timeline-wrapper .timeline-badge {
+      width: 14px;
+      height: 14px;
+      position: absolute;
+      top: 16px;
+      left: calc(50% - 7px);
+      z-index: 10;
+      border-top-right-radius: 50%;
+      border-top-left-radius: 50%;
+      border-bottom-right-radius: 50%;
+      border-bottom-left-radius: 50%;
+      border: 2px solid #ffffff;
+    }
+    
+    .timeline .timeline-wrapper .timeline-badge i {
+      color: #ffffff;
+    }
+    
+    .timeline .timeline-wrapper.timeline-inverted {
+      padding-right: 0;
+      padding-left: 90px;
+    }
+    
+    .timeline .timeline-wrapper.timeline-inverted .timeline-panel {
+      margin-left: auto;
+      margin-right: 15%;
+    }
+    
+    .timeline .timeline-wrapper.timeline-inverted .timeline-panel:after {
+      border-left-width: 0;
+      border-right-width: 14px;
+      left: -14px;
+      right: auto;
+    }
+    
+    @media (max-width: 767px) {
+      .timeline .timeline-wrapper {
+        padding-right: 150px;
+      }
+      .timeline .timeline-wrapper.timeline-inverted {
+        padding-left: 150px;
+      }
+      .timeline .timeline-wrapper .timeline-panel {
+        width: 60%;
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .timeline .timeline-wrapper .timeline-panel {
+        width: 68%;
+      }
+    }
+    
+    .timeline-wrapper-primary .timeline-panel:before {
+      background: #464dee;
+    }
+    
+    .timeline-wrapper-primary .timeline-badge {
+      background: #464dee;
+    }
+    
+    .timeline-wrapper-secondary .timeline-panel:before {
+      background: #6c7293;
+    }
+    
+    .timeline-wrapper-secondary .timeline-badge {
+      background: #6c7293;
+    }
+    
+    .timeline-wrapper-success .timeline-panel:before {
+      background: #0ddbb9;
+    }
+    
+    .timeline-wrapper-success .timeline-badge {
+      background: #0ddbb9;
+    }
+    
+    .timeline-wrapper-info .timeline-panel:before {
+      background: #0ad7f7;
+    }
+    
+    .timeline-wrapper-info .timeline-badge {
+      background: #0ad7f7;
+    }
+    
+    .timeline-wrapper-warning .timeline-panel:before {
+      background: #fcd539;
+    }
+    
+    .timeline-wrapper-warning .timeline-badge {
+      background: #fcd539;
+    }
+    
+    .timeline-wrapper-danger .timeline-panel:before {
+      background: #ef5958;
+    }
+    
+    .timeline-wrapper-danger .timeline-badge {
+      background: #ef5958;
+    }
+    
+    .timeline-wrapper-light .timeline-panel:before {
+      background: #eaeaea;
+    }
+    
+    .timeline-wrapper-light .timeline-badge {
+      background: #eaeaea;
+    }
+    
+    .timeline-wrapper-dark .timeline-panel:before {
+      background: #001737;
+    }
+    
+    .timeline-wrapper-dark .timeline-badge {
+      background: #001737;
+    }
+    
+    
+    /* Cards */
+    .card {
+      box-shadow: none;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      -ms-box-shadow: none;
+    }
+    
+    .card .card-body {
+      padding: 1.75rem 1.75rem;
+    }
+    
+    .card .card-body + .card-body {
+      padding-top: 1rem;
+    }
+    
+    .card .card-title {
+      color: #001737;
+      margin-bottom: .5rem;
+      text-transform: capitalize;
+      font-size: 0.875rem;
+    }
+    
+    .card .card-subtitle {
+      font-weight: 400;
+      margin-top: 0.625rem;
+      margin-bottom: 0.625rem;
+    }
+    
+    .card .card-description {
+      margin-bottom: .875rem;
+      font-weight: 400;
+      color: #76838f;
+    }
+    
+    .card.card-outline-success {
+      border: 1px solid #0ddbb9;
+    }
+    
+    .card.card-outline-primary {
+      border: 1px solid #464dee;
+    }
+    
+    .card.card-outline-warning {
+      border: 1px solid #fcd539;
+    }
+    
+    .card.card-outline-danger {
+      border: 1px solid #ef5958;
+    }
+    
+    .card.card-rounded {
+      border-radius: 5px;
+    }
+    
+    .card.card-faded {
+      background: #b5b0b2;
+      border-color: #b5b0b2;
+    }
+    
+    .card.card-circle-progress {
+      color: #ffffff;
+      text-align: center;
+    }
+    
+    .card.card-img-holder {
+      position: relative;
+    }
+    
+    .card.card-img-holder .card-img-absolute {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+    
+    .card.card-weather .weather-daily .weather-day {
+      opacity: .5;
+      font-weight: 900;
+    }
+    
+    .card.card-weather .weather-daily i {
+      font-size: 20px;
+    }
+    
+    .card.card-weather .weather-daily .weather-temp {
+      margin-top: .5rem;
+      margin-bottom: 0;
+      opacity: .5;
+      font-size: .75rem;
+    }
+    
+    .card-inverse-primary {
+      background: rgba(70, 77, 238, 0.2);
+      border: 1px solid #4047db;
+      color: #353bb5;
+    }
+    
+    .card-inverse-secondary {
+      background: rgba(108, 114, 147, 0.2);
+      border: 1px solid #636987;
+      color: #525770;
+    }
+    
+    .card-inverse-success {
+      background: rgba(13, 219, 185, 0.2);
+      border: 1px solid #0cc9aa;
+      color: #0aa68d;
+    }
+    
+    .card-inverse-info {
+      background: rgba(10, 215, 247, 0.2);
+      border: 1px solid #09c6e3;
+      color: #08a3bc;
+    }
+    
+    .card-inverse-warning {
+      background: rgba(252, 213, 57, 0.2);
+      border: 1px solid #e8c434;
+      color: #c0a22b;
+    }
+    
+    .card-inverse-danger {
+      background: rgba(239, 89, 88, 0.2);
+      border: 1px solid #dc5251;
+      color: #b64443;
+    }
+    
+    .card-inverse-light {
+      background: rgba(234, 234, 234, 0.2);
+      border: 1px solid #d7d7d7;
+      color: #b2b2b2;
+    }
+    
+    .card-inverse-dark {
+      background: rgba(0, 23, 55, 0.2);
+      border: 1px solid #001533;
+      color: #00112a;
+    }
+</style>
+<div class="container" >
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body" style="background-color:powderblue;">
+          <h4 class="card-title">Timeline</h4>
+          <p class="card-description">A simple timeline</p>
+          <div class="mt-5">
+            <div class="timeline">
+              <div class="timeline-wrapper timeline-wrapper-warning">
+                <div class="timeline-badge"></div>
+                <div class="timeline-panel">
+                  <div class="timeline-heading">
+                    <h6 class="timeline-title">Beta</h6>
+                  </div>
+                  <div class="timeline-body">
+                    <p style="color:black;">Two years in the making, we finally have our first beta release of Bootstrap 4.</p>
+                  </div>
+                  <div class="timeline-footer d-flex align-items-center flex-wrap">
+                      <i class="mdi mdi-heart-outline text-muted mr-1"></i>
+                      <span>19</span>
+                      <span class="ml-md-auto font-weight-bold">19 Oct 2017</span>
+                  </div>
+                </div>
+              </div>
+              <div class="timeline-wrapper timeline-inverted timeline-wrapper-danger">
+                <div class="timeline-badge"></div>
+                <div class="timeline-panel">
+                  <div class="timeline-heading">
+                    <h6 class="timeline-title">4 Alpha 6</h6>
+                  </div>
+                  <div class="timeline-body">
+                    <p style="color:black;">Alpha 6 has landed, and it’s one of our biggest ships to date.</p>
+                  </div>
+                  <div class="timeline-footer d-flex align-items-center flex-wrap">
+                      <i class="mdi mdi-heart-outline text-muted mr-1"></i>
+                      <span>25</span>
+                      <span class="ml-md-auto font-weight-bold">10th Aug 2017</span>
+                  </div>
+                </div>
+              </div>
+              <div class="timeline-wrapper timeline-wrapper-success">
+                <div class="timeline-badge"></div>
+                <div class="timeline-panel">
+                  <div class="timeline-heading">
+                    <h6 class="timeline-title">Alpha 5</h6>
+                  </div>
+                  <div class="timeline-body">
+                    <p style="color:black;">Alpha 5 has arrived just over a month after Alpha 4 with some major feature improvements and a boat load of bug fixes.</p>
+                  </div>
+                  <div class="timeline-footer d-flex align-items-center flex-wrap">
+                      <i class="mdi mdi-heart-outline text-muted mr-1"></i>
+                      <span>19</span>
+                      <span class="ml-md-auto font-weight-bold">5th Sep 2016</span>
+                  </div>
+                </div>
+              </div>
+              <div class="timeline-wrapper timeline-inverted timeline-wrapper-info">
+                <div class="timeline-badge"></div>
+                <div class="timeline-panel">
+                  <div class="timeline-heading">
+                    <h6 class="timeline-title"> Alpha 4</h6>
+                  </div>
+                  <div class="timeline-body">
+                    <p style="color:black;">Alpha 4 is here to address those pesky build and package errors, a few CSS bugs, and some documentation inconsistencies we introduced in our last release.</p>
+                  </div>
+                  <div class="timeline-footer d-flex align-items-center flex-wrap">
+                      <i class="mdi mdi-heart-outline text-muted mr-1"></i>
+                      <span>19</span>
+                      <span class="ml-md-auto font-weight-bold">27th July 2016</span>
+                  </div>
+                </div>
+              </div>
+              <div class="timeline-wrapper timeline-wrapper-primary">
+                <div class="timeline-badge"></div>
+                <div class="timeline-panel">
+                  <div class="timeline-heading">
+                    <h6 class="timeline-title">Alpha 3</h6>
+                  </div>
+                  <div class="timeline-body">
+                    <p style="color:black;">Alpha 3 has landed! We have an overhauled grid, updated form controls, a new font stack, tons of bug fixes, and more.</p>
+                  </div>
+                  <div class="timeline-footer d-flex align-items-center flex-wrap">
+                      <i class="mdi mdi-heart-outline text-muted mr-1"></i>
+                      <span>25</span>
+                      <span class="ml-md-auto font-weight-bold">25th July 2016</span>
+                  </div>
+                </div>
+              </div>
+              <div class="timeline-wrapper timeline-inverted timeline-wrapper-info">
+                <div class="timeline-badge"></div>
+                <div class="timeline-panel">
+                  <div class="timeline-heading">
+                    <h6 class="timeline-title">Alpha 2</h6>
+                  </div>
+                  <div class="timeline-body">
+                    <p style="color:black;">The general plan for v4’s development starts with a few alpha releases. We’re a little behind on that, but should be getting caught up as the year winds down.</p>
+                  </div>
+                  <div class="timeline-footer d-flex align-items-center flex-wrap">
+                      <i class="mdi mdi-heart-outline text-muted mr-1"></i>
+                      <span>32</span>
+                      <span class="ml-md-auto font-weight-bold">19th Aug 2015</span>
+                  </div>
+                </div>
+              </div>
+              <div class="timeline-wrapper timeline-wrapper-success">
+                <div class="timeline-badge"></div>
+                <div class="timeline-panel">
+                  <div class="timeline-heading">
+                    <h6 class="timeline-title">alpha 1</h6>
+                  </div>
+                  <div class="timeline-body">
+                    <p style="color:black;">Bootstrap 4 has been a massive undertaking that touches nearly every line of code.</p>
+                  </div>
+                  <div class="timeline-footer d-flex align-items-center flex-wrap">
+                      <i class="mdi mdi-heart-outline text-muted mr-1"></i>
+                      <span>26</span>
+                      <span class="ml-md-auto font-weight-bold">15th Jun 2015</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
 <!-- Listings -->
 <section id="listings" class="py-5">
   <div class="container">
     <h3 class="text-center mb-3">Latest Listings</h3>
     <div class="row">
-      <!-- Listing 1 -->
-      <div class="col-md-6 col-lg-4 mb-4">
-        <div class="card listing-preview">
-          <img class="card-img-top" src="assets/img/homes/home-1.jpg" alt="">
-          <div class="card-img-overlay">
-            <h2>
-              <span class="badge badge-secondary text-white">$490,000</span>
-            </h2>
-          </div>
-          <div class="card-body">
-            <div class="listing-heading text-center">
-              <h4 class="text-primary">45 Drivewood Circle</h4>
-              <p>
-                <i class="fas fa-map-marker text-secondary"></i> Norwood MA, 02062</p>
+      {% if listings %}
+      {% for listing in listings %}
+            <!-- Listing 1 -->
+            <div class="col-md-6 col-lg-4 mb-4">
+              <div class="card listing-preview">
+                <img class="card-img-top" src="{{listing.photo_main.url}}" alt="">
+                <div class="card-img-overlay">
+                  <h2>
+                    <span class="badge badge-secondary text-white">{{listing.topic}}</span>
+                  </h2>
+                </div>
+                <div class="card-body">
+                  <div class="listing-heading text-center">
+                    <h4 class="text-primary">{{listing.title}}</h4>
+                    <p>
+                      <i class="fas fa-map-marker text-secondary"></i> {{listing.list_date}}</p>
+                  </div>
+                  
+                  <a href="{% url 'listing' listing.id %}" class="btn btn-primary btn-block">More Info</a>
+                </div>
+              </div>
             </div>
-            <hr>
-            <div class="row py-2 text-secondary">
-              <div class="col-6">
-                <i class="fas fa-th-large"></i> Sqft: 2500</div>
-              <div class="col-6">
-                <i class="fas fa-car"></i> Garage: 2</div>
-            </div>
-            <div class="row py-2 text-secondary">
-              <div class="col-6">
-                <i class="fas fa-bed"></i> Bedrooms: 3</div>
-              <div class="col-6">
-                <i class="fas fa-bath"></i> Bathrooms: 2</div>
-            </div>
-            <hr>
-            <div class="row py-2 text-secondary">
-              <div class="col-6">
-                <i class="fas fa-user"></i> Kyle Brown</div>
-            </div>
-            <div class="row text-secondary pb-2">
-              <div class="col-6">
-                <i class="fas fa-clock"></i> 5 days ago</div>
-            </div>
-            <hr>
-            <a href="listing.html" class="btn btn-primary btn-block">More Info</a>
-          </div>
-        </div>
+      
+      {% endfor %}
+      {% else %}
+      <div class="col-md-12">
+        <p>no list available</p>
       </div>
-
-      <!-- Listing 2 -->
-      <div class="col-md-6 col-lg-4 mb-4">
-        <div class="card listing-preview">
-          <img class="card-img-top" src="assets/img/homes/home-2.jpg" alt="">
-          <div class="card-img-overlay">
-            <h2>
-              <span class="badge badge-secondary text-white">$550,000</span>
-            </h2>
-          </div>
-          <div class="card-body">
-            <div class="listing-heading text-center">
-              <h4 class="text-primary">18 Jefferson Lane</h4>
-              <p>
-                <i class="fas fa-map-marker text-secondary"></i> Woburn MA, 01801</p>
-            </div>
-            <hr>
-            <div class="row py-2 text-secondary">
-              <div class="col-6">
-                <i class="fas fa-th-large"></i> Sqft: 3200</div>
-              <div class="col-6">
-                <i class="fas fa-car"></i> Garage: 1</div>
-            </div>
-            <div class="row py-2 text-secondary">
-              <div class="col-6">
-                <i class="fas fa-bed"></i> Bedrooms: 4</div>
-              <div class="col-6">
-                <i class="fas fa-bath"></i> Bathrooms: 2.5</div>
-            </div>
-            <hr>
-            <div class="row py-2 text-secondary">
-              <div class="col-6">
-                <i class="fas fa-user"></i> Mark Hudson</div>
-            </div>
-            <div class="row text-secondary pb-2">
-              <div class="col-6">
-                <i class="fas fa-clock"></i> 5 days ago</div>
-            </div>
-            <hr>
-            <a href="listing.html" class="btn btn-primary btn-block">More Info</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Listing 3 -->
-      <div class="col-md-6 col-lg-4 mb-4">
-        <div class="card listing-preview">
-          <img class="card-img-top" src="assets/img/homes/home-3.jpg" alt="">
-          <div class="card-img-overlay">
-            <h2>
-              <span class="badge badge-secondary text-white">$580,000</span>
-            </h2>
-          </div>
-          <div class="card-body">
-            <div class="listing-heading text-center">
-              <h4 class="text-primary">187 Woodrow Street</h4>
-              <p>
-                <i class="fas fa-map-marker text-secondary"></i> Salem MA, 01915</p>
-            </div>
-            <hr>
-            <div class="row py-2 text-secondary">
-              <div class="col-6">
-                <i class="fas fa-th-large"></i> Sqft: 3107</div>
-              <div class="col-6">
-                <i class="fas fa-car"></i> Garage: 0</div>
-            </div>
-            <div class="row py-2 text-secondary">
-              <div class="col-6">
-                <i class="fas fa-bed"></i> Bedrooms: 4</div>
-              <div class="col-6">
-                <i class="fas fa-bath"></i> Bathrooms: 3</div>
-            </div>
-            <hr>
-            <div class="row py-2 text-secondary">
-              <div class="col-6">
-                <i class="fas fa-user"></i> Mark Hudson</div>
-            </div>
-            <div class="row text-secondary pb-2">
-              <div class="col-6">
-                <i class="fas fa-clock"></i> 5 days ago</div>
-            </div>
-            <hr>
-            <a href="listing.html" class="btn btn-primary btn-block">More Info</a>
-          </div>
-        </div>
-      </div>
+      {% endif %}
 
     </div>
   </div>
@@ -268,23 +579,20 @@
       <div class="col-md-4">
         <i class="fas fa-comment fa-4x mr-4"></i>
         <hr>
-        <h3>Consulting Services</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, debitis nam! Repudiandae, provident iste consequatur
-          hic dignissimos ratione ea quae.</p>
+        <h3>Services</h3>
+        <p>for now we are only focussing on python language due to its huge demand for beginners will update with other languages too as per your reviews and feedback</p>
       </div>
       <div class="col-md-4">
         <i class="fas fa-home fa-4x mr-4"></i>
         <hr>
-        <h3>Propery Management</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, debitis nam! Repudiandae, provident iste consequatur
-          hic dignissimos ratione ea quae.</p>
+        <h3>Structured courses</h3>
+        <p>Here we are providing you with well structured material which you can found nowhere you will definitely see your growth at the end just stick to your material</p>
       </div>
       <div class="col-md-4">
         <i class="fas fa-suitcase fa-4x mr-4"></i>
         <hr>
-        <h3>Renting & Selling</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, debitis nam! Repudiandae, provident iste consequatur
-          hic dignissimos ratione ea quae.</p>
+        <h3>Help us grow</h3>
+        <p>This is a startup with a long term goal for which we need your help, you can donate as little as you wan>>:) happy learning</p>
       </div>
     </div>
   </div>
